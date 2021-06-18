@@ -21,7 +21,7 @@ public class Client {
 		System.out.println("==============================");
 
 		System.out.println("[서버에 연결을 요청합니다.]");
-		socket.connect(new InetSocketAddress("192.168.35.3", 10001));
+		socket.connect(new InetSocketAddress("192.168.35.29", 10001));
 		System.out.println("[서버에 연결 되었습니다.]");
 
 		// 메세지 보내기용 스트림
@@ -37,10 +37,17 @@ public class Client {
 		// 스캐너
 		Scanner sc = new Scanner(System.in);
 
+		/*
+		 * //스캐너-스트림 InputStream in = System.in; InputStreamReader sisr = new
+		 * InputStreamReader(in); BufferedReader sbr = new BufferedReader(sisr);
+		 */
+
 		while (true) {
 			// 메세지 보내기
 			// 키보드 입력
+			// String str = sbr.readLine();
 			String str = sc.nextLine();
+
 			if ("/q".equals(str)) {
 				System.out.println("[접속 종료되었습니다.]");
 				break;
@@ -58,8 +65,18 @@ public class Client {
 		}
 
 		System.out.println("==============================");
+
+		// println()-스트림
+		/*
+		 * OutputStream out = System.out; OutputStreamWriter sosw = new
+		 * OutputStreamWriter(out); BufferedWriter sbw = new BufferedWriter(sosw);
+		 * 
+		 * sbw.write("<클라이언트 종료>"); sbw.newLine(); sbw.flush();
+		 */
+
 		System.out.println("[클라이언트 종료]");
-		
+
+		// sbr.close();
 		sc.close();
 		socket.close();
 
